@@ -302,7 +302,7 @@ class Weapon:
         
         #weapon name and damaged added to attacks
         self.name = name
-        self.damage_bonus = damage_bonue
+        self.damage_bonus = damage_bonus
         
     def display_info(self):
         """
