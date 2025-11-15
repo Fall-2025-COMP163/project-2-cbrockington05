@@ -11,6 +11,9 @@ Example: AI helped with inheritance structure and method overriding concepts
 # PROVIDED BATTLE SYSTEM (DO NOT MODIFY)
 # ============================================================================
 
+#needed for rogue attacks
+import random
+
 class SimpleBattle:
     """
     Simple battle system provided for you to test your characters.
@@ -130,13 +133,12 @@ class Player(Character):
         # TODO: Add any other player-specific attributes (level, experience, etc.)
         
         #call base initializer
-        def __init__(self, name, character_class, health, strength, magic):
-            super().__init__(name, health, strength, magic)
+        super().__init__(name, health, strength, magic)
             
-            #attributes specific to player
-            self.character_class = character_class
-            self.level = 1
-            self.experience = 0
+        #attributes specific to player
+        self.character_class = character_class
+        self.level = 1
+        self.experience = 0
         
     def display_stats(self):
         """
@@ -181,6 +183,7 @@ class Warrior(Player):
         print(f"{self.name} performs a strong attack for {damage} damage!")
         #warriors get +5 bonus physical damage
 
+        target.take_damage(damage)
 
     def power_strike(self, target):
         """
@@ -191,7 +194,7 @@ class Warrior(Player):
         
         damage = self.stregth + 15
         print(f"{self.name} uses power strike for {damage} damage!")
-        targer.take_damage(damage)
+        target.take_damage(damage)
 
 class Mage(Player):
     """
@@ -325,7 +328,7 @@ if __name__ == "__main__":
     # rogue = Rogue("Robin Hood")
     
     #creating each character type
-    warrior = Warrior(f'Naruto')
+    warrior = Warrior('Naruto')
     mage = Mage("Tsunade")
     rogue = Rogue("Sasuke")
 
